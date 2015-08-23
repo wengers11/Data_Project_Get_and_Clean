@@ -39,7 +39,7 @@ x_all<-bind_cols(subject_all,x_all)           ## bind subject IDs to subject out
 
 ##selects just the columns containing mean and std variables
 ## grepl looks for text that matches the input in the location specified (i.e. column names)
-x_select<-x_all[,grepl("mean", names(x_all)) | grepl("std", names(x_all))]
+x_select<-x_all[,1|grepl("mean", names(x_all)) | grepl("std", names(x_all))]
 
 my_data<-bind_cols(y_all,x_select)       ## combines the X and Y data pieces
 
