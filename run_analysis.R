@@ -32,9 +32,14 @@ names(x_all)<-feature_labels$V2                ##add column labels to subject da
 x_all<-bind_cols(subject_all,x_all)           ## bind subject IDs to subject outputs/data
 
 ##selects just the columns containing mean and std variables
-x_select<-x_all[,c(1:6,41:46,81:86,121:126,161:166,201:202,214:215,227:228,
-                   240:241,253:254,266:271,294:296,345:350,373:375,
-                   424:429,452:454,503:504,516:517,529:530,542:543)]
+
+##x_select<-x_all[,c(1:6,41:46,81:86,121:126,161:166,201:202,214:215,227:228,
+##                   240:241,253:254,266:271,294:296,345:350,373:375,
+##                   424:429,452:454,503:504,516:517,529:530,542:543)]
+
+##selects just the columns containing mean and std variables
+## grepl looks for text that matches the input in the location specified (i.e. column names)
+x_select<-x_all[,grepl("mean", names(x_all)) | grepl("std", names(x_all))]
 
 my_data<-bind_cols(y_all,x_select)       ## combines the X and Y data pieces
 
